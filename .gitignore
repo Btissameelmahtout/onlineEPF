@@ -1,0 +1,113 @@
+# This file contains patterns for ignoring files / folders in a git repository.
+# If a specific file is catched by the .gitignore file, but you need to add it
+# you can use the following command to do so:
+# git add -f  path/to/file/i/want/to/track.txt
+# However, think about the necessity of tracking the file before doing so.
+
+### Blacklist folders:
+
+data/*
+.bin/*
+.direnv/*
+.venv/*
+
+### Blacklist files:
+
+# Secrets
+*secrets*
+.env
+
+# Latex related
+*.aux
+*.glo
+*.idx
+*.log
+*.toc
+*.ist
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtc1
+*.out
+*.synctex.gz
+*.bcf
+*.xml
+*.bst
+*.fdb_latexmk
+*.fls
+*.snm
+*.nav
+*.latexmkrc
+*.vrb
+
+# R Related
+*.Rhistory
+*.RDataTmp
+*.RData
+
+# Python binaries
+*.pyc
+*.npy
+*.pt
+*.py.ipynb
+*.pkl
+
+# Potentially large but not binary
+*.svg
+
+# Binary files
+*.pdf
+*.jpg
+*.png
+*.gif
+*.zip
+*.gz
+*.tar
+*.kmz
+# Matches Rds, RDS, rds, etc.
+*.[rR][dD][sS]
+*.odt
+*.ods
+*.docx
+*.xlsx
+*.doc
+*.pptx
+*.ppt
+*.exe
+*.dll
+*.class
+*.jar
+*.so
+*.lib
+*.bin
+
+# Misc
+.~lock.*
+
+# Data
+*.csv
+!Data/Germany.csv
+!Data/Spain.csv
+*.xlsx
+
+# Whitelist selected files
+!data/example_witelisted.csv
+
+#
+__pycache__/*
+
+flake.nix
+flake.lock
+requirements.txt
+.envrc
