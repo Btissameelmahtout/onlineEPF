@@ -61,7 +61,7 @@ data/*
 *.npy
 *.pt
 *.py.ipynb
-*.pkl
+#*.pkl
 
 # Potentially large but not binary
 *.svg
@@ -96,9 +96,9 @@ data/*
 .~lock.*
 
 # Data
-*.csv
-!Data/Germany.csv
-!Data/Spain.csv
+#*.csv
+#!Data/Germany.csv
+#!Data/Spain.csv
 *.xlsx
 
 # Whitelist selected files
