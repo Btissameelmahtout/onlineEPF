@@ -3,9 +3,11 @@ numpy<2.0
 pandas<2.0
 scipy<2.0
 statsmodels==0.14.6
-scikit-learn==1.8.0
+scikit-learn==1.7.2
 matplotlib==3.10.8
 #torch==2.9.1
 optuna==4.6.0
+tensorflow==2.21.0
+keras==3.12.4
 git+https://github.com/jeslago/epftoolbox.git@47d6e06
  
