@@ -1,7 +1,7 @@
 # Electricity Price Forecasting: Bridging Linear Models, Neural Networks and Online Learning
 **Author:** Btissame El Mahtout (btissame.el@tu-dortmund.de) & Florian Ziel
 
-**Date of assembly:** March 2026 | **Last updated:** September 2026
+**Date of assembly:** March 2026 | **Last updated:** October 2026
 
 This repository contains the code and data required to reproduce the results of the project, including **online model execution**, **benchmark evaluation**, **robustness analyses**, and the generation of the tables and figures reported in the manuscript.
 
@@ -193,7 +193,23 @@ The scripts in this folder should be run **without any modification**, as all re
 
 ### 3.5 📂 Figures
 
-After running all the scripts described above, run the scripts in the `Figures/` folder to generate the tables and figures reported in the manuscript.
+
+The `Figures/` folder contains scripts for generating the tables and figures reported in the manuscript. The following table provides an overview of the scripts required to reproduce each table and figure.
+
+| Manuscript output | Required experiment scripts | Figure/Table generation script |
+|---|---|---|
+| Figures 1, 2, 9, 10 | None (uses original data) | `Figures/Time_series.py` |
+| Figure 3 | None | `Figures/Figure_3.py` |
+| Figure 4 | None | `Figures/Figure_4.py` |
+| Figure 5 | `Online/Online_test.py` (`model_type = 1, 2, 3, 4, 5, 7, 8`; `country = "Germany"`)<br>`Online/BOA_test.py` (`country = "Germany"`)<br>`Benchmark/benchmark_test.py` (`country = "Germany"`) | `Figures/hourly_rmse.py` |
+| Table 1 | `Online/Online_test.py` (`model_type = 1, 2, 3, 4, 5, 7, 8`; `country = "Germany"` and `"Spain"`)<br>`Online/BOA_test.py` (`country = "Germany"` and `"Spain"`)<br>`Benchmark/benchmark_test.py` (`country = "Germany"` and `"Spain"`)<br>`Benchmark/GAM_test.R` (`country = "Germany"` and `"Spain"`) | `Figures/tables.py` (load packages and execute lines 13–134) |
+| Figure 6, 12, 13, 14, 15, 16, 17, 18 | `Online/Online_test.py` (`model_type = 1, 2, 3, 4, 5, 7, 8`; `country = "Germany"` and `"Spain"`)<br>`Online/BOA_test.py` (`country = "Germany"` and `"Spain"`)<br>`Benchmark/benchmark_test.py` (`country = "Germany"` and `"Spain"`)<br>`Benchmark/GAM_test.R` (`country = "Germany"` and `"Spain"`) | `Figures/Statisctical_tests.py` |
+| Figures 7| `Online/Online_test.py` (`model_type = 1, 2, 3, 4, 5, 7, 8`; `country = "Germany"` and `"Spain"`)<br>`Online/BOA_test.py` (`country = "Germany"` and `"Spain"`)<br>`Benchmark/benchmark_test.py` (`country = "Germany"` and `"Spain"`)<br>`Benchmark/GAM_test.R` (`country = "Germany"` and `"Spain"`) | `Figures/time_vs_accuracy.py` |
+| Table 2 |  `Online/Online_test.py` (`model_type = 3`; `country = "Germany"`)<br>`No_Online/No_online_test.py` (`model_type = 3`; `country = "Germany"`; `num_epochs = 10, 60, "None"`) | `Figures/tables.py` (load packages and execute lines 137–266) |
+| Figure 8| `Online/Online_test.py` (`model_type = 3`; `country = "Germany"`) | `Figures/Hyperparameters_effect.py` |
+| Table 3| `Crisis/Online_crisis_test.py` (`model_type = 3`; `country = "Germany"`)<br>`Benchmark/benchmark_test_crisis.py` (`country = "Germany"`)<br>`Benchmark/GAM_test_crisis.R` (`country = "Germany"`)  | `Figures/tables.py` (load packages and execute lines 269–450) |
+
+> **Note:** For each analysis, run the validation script (`_validation`) first, followed by the corresponding test script (`_test`). However, since the hyperparameter optimization performed by the validation scripts is computationally expensive, we have included the saved hyperparameter optimization results in this repository. Therefore, users can execute the test scripts directly using the provided files, without having to rerun the validation procedures.
 
 ---
 ## 4 Recommended Execution Order
@@ -213,8 +229,7 @@ For the complete set of experiments, the recommended execution order is:
 11. Run the `Benchmark/_crisis_` without modification.
 12. Run the scripts in the `Crisis/` folder without modification.
 13. After all experiments have been completed, run the scripts in the `Figures/` folder to generate the tables and figures reported in the manuscript.
-
-**Note:** For each analysis, run the corresponding validation script (`_validation`) first, followed by the associated test script (`_test`).    
+  
 
 ---
 
@@ -232,7 +247,8 @@ For the complete set of experiments, the recommended execution order is:
 | `Crisis/` | Crisis-period analysis | Run without modification | Validation: approximately 10–20 hours; Test: from a few seconds to a few minutes |
 | `Figures/` | Generates the tables and figures reported in the manuscript | Run after completing all experiments | — |
 
-> **Computational environment:** The validation scripts for the `Online/`, `No_Online/`, and `Crisis/` experiments were run on a machine equipped with a GPU, 32 CPU cores, and 64 GB of RAM. All `Benchmark/` scripts, as well as the test scripts for the other experiments, were run on a MacBook Pro (2020) equipped with an Apple M1 processor (8 CPU cores) and 16 GB of unified memory.
+> **Computational environment:** The validation scripts for the `Online/`, `No_Online/`, and `Crisis/` experiments were executed on a Linux-based machine equipped with a GPU, 24 physical CPU cores (32 logical threads), and 64 GB of RAM. The test scripts for all  experiments, as well as the validation scripts in the `Benchmark/` folder were executed on a MacBook Pro (2020) equipped with an Apple M1 processor (8 CPU cores) and 16 GB of unified memory.
+
 
 ---
 
